@@ -96,4 +96,26 @@ On the other hand, SSE (sum of squared errors) is a measure of the overall goodn
 In summary, epsilon represents the residual errors for each observation in the dataset, while SSE is a measure of the overall goodness of fit of the regression model based on the sum of the squared residual errors.
 In summary, correlated errors can occur when there are systematic patterns in the residuals that are related to some other variable in the dataset.
 
+## Independence of errors
+---
+
 When the assumption of independent errors holds, the ordinary least squares (OLS) method for minimizing SSE is valid and efficient. OLS is a method that estimates the values of the regression coefficients by minimizing the sum of squared errors, which is a measure of the difference between the observed values and the predicted values of the response variable.
+
+**If your residuals are still correlated is your predictor variable(s) really doing a good job predicting?** Is your model valid?
+
+There are several situations where the residuals in a regression model might not be independent. Here's an example:
+
+Suppose you are building a model to predict housing prices based on various features of a house, such as square footage, number of bedrooms, and location. You collect data from a real estate website and build a linear regression model to predict housing prices.
+
+However, you notice that there is some correlation between the residuals of the model, which violates the assumption of independence. This could occur if the data from the real estate website is clustered by neighborhood, and there are unobserved neighborhood-level factors that affect housing prices, such as school quality or crime rates. If the model does not include these neighborhood-level factors, the residuals might be correlated within each neighborhood, leading to violation of the assumption of independence.
+
+## Equal Variance of errors
+---
+
+**How well does your model predict across the entire range of possible observed values?**<br>
+Heteroscedasticity can occur in various real-world scenarios where the variance of the error terms changes across the range of the independent variables. Here's an example:
+
+Suppose you are analyzing the relationship between a person's age (independent variable) and their income (dependent variable). You collect data from a sample of individuals ranging in age from 18 to 65. You run a linear regression model to estimate the effect of age on income.
+
+If the variance of the error term is not constant across all values of age, you may observe heteroscedasticity in the data. For example, you may find that the variance of the errors increases as age increases, indicating that the residuals are more spread out for older individuals. This could occur if older individuals have more diverse sources of income than younger individuals, leading to a wider range of income levels and greater variance in the errors.
+
