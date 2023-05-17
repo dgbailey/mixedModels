@@ -119,3 +119,5 @@ Suppose you are analyzing the relationship between a person's age (independent v
 
 If the variance of the error term is not constant across all values of age, you may observe heteroscedasticity in the data. For example, you may find that the variance of the errors increases as age increases, indicating that the residuals are more spread out for older individuals. This could occur if older individuals have more diverse sources of income than younger individuals, leading to a wider range of income levels and greater variance in the errors.
 
+## Normality of Errors
+---
