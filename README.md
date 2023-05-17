@@ -121,3 +121,29 @@ If the variance of the error term is not constant across all values of age, you 
 
 ## Normality of Errors
 ---
+The assumption of normality of the residuals. 
+
+When performing regression analysis, the estimated coefficients (also known as regression coefficients or beta coefficients) represent the estimated relationships between the independent variables and the dependent variable
+
+To assess the uncertainty associated with these estimated coefficients, confidence intervals are constructed. A confidence interval provides a range of plausible values for the coefficient, along with an associated level of confidence. For example, a 95% confidence interval for a coefficient means that we are 95% confident that the true population coefficient lies within that interval.
+
+In ordinary least squares (OLS) regression, the standard errors of the estimated coefficients are calculated based on the assumption that the errors (or residuals) follow a normal distribution with constant variance. These standard errors are then used to construct confidence intervals around the estimated coefficients.
+
+**The estimated coefficients are obtained from a single sample of data, and they are used to make inferences about the population parameters.** However, because we only have one sample, there is uncertainty associated with the estimated coefficients. The sampling distribution helps us understand this uncertainty by considering the range of estimated coefficients that we would obtain if we were to repeat the sampling process multiple times.
+
+The shape of the sampling distribution depends on various factors, including the properties of the data and the underlying assumptions of the regression model. Under the assumption of normality, the sampling distribution of the estimated coefficients is often assumed to be approximately normal, especially for large sample sizes. In such cases, we can use the properties of the normal distribution to construct confidence intervals and perform hypothesis tests.
+
+### But I thought we were using partial derivitives to compute coefficients that minimize something? How does this fit in with standard errors? 
+---
+The partial derivatives are used to find the values of the regression coefficients that minimize the sum of squared residuals. Once the estimates of the coefficients are obtained, the standard errors are calculated to assess the uncertainty associated with these estimates.
+
+The standard errors quantify the variability of the estimated coefficients and reflect the spread of the coefficient estimates around their true population values. They provide a measure of how much the estimated coefficients are likely to vary if the regression analysis were repeated on different samples from the same population.
+
+The standard errors can be calculated using various methods, including the matrix algebra approach or the formula-based approach. The most common method is based on the assumption that the errors (residuals) are independently and normally distributed with constant variance. Under this assumption, the standard errors are estimated using the residuals and the properties of the observed data.
+
+By estimating the standard errors, we obtain a measure of uncertainty associated with the estimated coefficients. These standard errors are then used in various statistical procedures, such as hypothesis testing and constructing confidence intervals, to make statistical inferences about the population parameters and assess the significance of the estimated relationships.
+
+## Sampling distributions for confidence intervals
+
+## Tests
+---
