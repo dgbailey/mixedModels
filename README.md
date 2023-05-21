@@ -143,6 +143,16 @@ The standard errors can be calculated using various methods, including the matri
 
 By estimating the standard errors, we obtain a measure of uncertainty associated with the estimated coefficients. These standard errors are then used in various statistical procedures, such as hypothesis testing and constructing confidence intervals, to make statistical inferences about the population parameters and assess the significance of the estimated relationships.
 
+
+## Constant variance vs. correlated resituals
+
+Constant variance and independence of residuals are related but distinct concepts in regression analysis.
+
+Constant variance, also known as homoscedasticity, means that the variability of the residuals is consistent across all levels of the independent variables. In other words, the spread or dispersion of the residuals should be constant throughout the range of the predictors. This assumption is important because it ensures that the errors have a consistent level of variability and that the model's predictions are equally reliable across the entire range of the independent variables.
+
+On the other hand, independence of residuals refers to the lack of correlation or dependence between the residuals. It assumes that the residuals for different observations are not systematically related to each other. In other words, the value of the residual for one observation does not provide any information about the value of the residual for another observation. Independence is crucial because it allows us to make valid statistical inferences, conduct hypothesis tests, and construct reliable confidence intervals.
+
+
 ## Sampling distributions for confidence intervals
 
 ## Tests
