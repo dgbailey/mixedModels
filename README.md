@@ -152,7 +152,6 @@ Constant variance, also known as homoscedasticity, means that the variability of
 
 On the other hand, independence of residuals refers to the lack of correlation or dependence between the residuals. It assumes that the residuals for different observations are not systematically related to each other. In other words, the value of the residual for one observation does not provide any information about the value of the residual for another observation. Independence is crucial because it allows us to make valid statistical inferences, conduct hypothesis tests, and construct reliable confidence intervals.
 
-<<<<<<< HEAD
 ## Efficiency 
 
 **precision and reliability of the estimated coefficients.**
@@ -162,8 +161,6 @@ In the context of regression analysis, efficiency refers to the statistical effi
 In ordinary least squares (OLS) regression, the estimated coefficients are the least squares estimates that minimize the sum of squared residuals. ***These estimates are unbiased, meaning that on average, they are equal to the true population values**. However, among all unbiased estimators, the OLS estimates are also the most efficient when certain assumptions are met.
 
 When the assumptions of OLS regression, such as linearity, independence, constant variance, and normality of errors, are met, **the OLS estimators are not only unbiased but also the most efficient. In this case, they achieve the smallest possible variances, making them highly desirable for inference and hypothesis testing.**
-=======
->>>>>>> refs/remotes/origin/regression_assumptions
 
 ## Sampling distributions for confidence intervals
 
