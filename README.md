@@ -144,7 +144,7 @@ The standard errors can be calculated using various methods, including the matri
 By estimating the standard errors, we obtain a measure of uncertainty associated with the estimated coefficients. These standard errors are then used in various statistical procedures, such as hypothesis testing and constructing confidence intervals, to make statistical inferences about the population parameters and assess the significance of the estimated relationships.
 
 
-## Constant variance vs. correlated resituals
+## Constant variance vs. correlated residuals
 
 Constant variance and independence of residuals are related but distinct concepts in regression analysis.
 
