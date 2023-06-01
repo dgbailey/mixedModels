@@ -301,5 +301,163 @@ RSS is the residual sum of squares<br>
 n is the sample size<br>
 k is the number of predictor variables in the model<br>
 
+## Factors impacting distributions for test statistics (Degrees of freedom)
+
+We have seen that test statistics are important for assessing the likelihood of observing coefficients as extreme or more than those in our sample data. 
+
+It appears that the probibility distributions which we use to compute a number that helps use form these conclusions around these test statistics 
+
+In statistics, degrees of freedom (df) refer to the number of values in a calculation that are free to vary. The concept of degrees of freedom is important in various statistical procedures and plays a role in determining the shape and characteristics of probability distributions, including the t-distribution.
+
+Degrees of freedom are typically associated with the sample size and the number of restrictions or constraints in a statistical analysis. Let's explore their impact on distributions:
+
+Sampling distributions: In inferential statistics, degrees of freedom are involved in calculating sampling distributions, which are used to make inferences about population parameters. The degrees of freedom are determined by the sample size and are often denoted as n - 1, where n represents the number of observations in the sample. For example, in a simple mean calculation, if you have a sample of size 10, the degrees of freedom would be 10 - 1 = 9.
+
+t-distribution: The t-distribution is parameterized by its degrees of freedom. As the degrees of freedom increase, the shape of the t-distribution becomes closer to the standard normal distribution. Specifically, as the sample size increases, the t-distribution becomes more symmetrical and has thinner tails. For very large degrees of freedom (approaching infinity), the t-distribution converges to the standard normal distribution.
+
+Chi-square distribution: The chi-square distribution, which is often used in hypothesis testing and confidence interval estimation, is also influenced by degrees of freedom. The degrees of freedom in the chi-square distribution determine the shape and spread of the distribution. As the degrees of freedom increase, the chi-square distribution becomes more bell-shaped and approaches a normal distribution.
+
+F-distribution: The F-distribution, commonly used in analysis of variance (ANOVA) and regression analysis, is defined by two sets of degrees of freedom: the numerator degrees of freedom and the denominator degrees of freedom. The degrees of freedom in the numerator represent the number of groups or predictors, while the degrees of freedom in the denominator are related to the error or residual degrees of freedom. The F-distribution shape changes depending on the values of these degrees of freedom.
+
+## Spotlight on degrees of freedom (F distribution and test statistic)
+In summary, degrees of freedom in regression analysis reflect the balance between the number of observations, the number of predictors, and the number of estimated coefficients in the model. They help quantify the independent information available, the variability in the data, and are crucial for various statistical calculations and inference in regression analysis.
+
+The F-distribution is a probability distribution that arises when testing hypotheses about variances or the ratio of variances. The F-test is commonly used in regression analysis to assess the overall significance of the regression model or to compare the significance of different models.
+
+In regression, the F-test is used to test the null hypothesis that all the regression coefficients (except the intercept) are equal to zero. The F-score test statistic is calculated by dividing the mean square explained by the mean square unexplained:
+```
+F = (SSE / df_model) / (SSR / df_res)
+```
+where SSE represents the sum of squared errors (residual sum of squares), SSR represents the sum of squared regression (explained sum of squares), df_model represents the degrees of freedom associated with the regression model, and df_res represents the residual degrees of freedom.
+
+The F-test statistic follows an F-distribution when the null hypothesis is true. The shape of the F-distribution depends on the degrees of freedom associated with the numerator (df_model) and the denominator (df_res). The F-distribution is positively skewed, with values ranging from zero to positive infinity.
+
+By comparing the calculated F-test statistic to the critical value from the F-distribution corresponding to a chosen significance level, you can determine the statistical significance of the regression model. If the calculated F-value exceeds the critical value, you would reject the null hypothesis, indicating that the regression model as a whole has a significant effect.
+
+In summary, the F-score test statistic in regression analysis is derived from the F-distribution. The F-distribution provides critical values for hypothesis testing, confidence intervals, and determining the significance of the overall model fit in regression analysis.<br>
+
+**why are we using ratios in the numerator and denom of the F statistic. What does this accomplish mathmatically?**
+
+
+Using ratios in the numerator and denominator of the F statistic in regression analysis serves a specific purpose mathematically. Let's examine the rationale behind this approach:
+
+Capturing variability: The F statistic is designed to capture the ratio of two sources of variability: the variability explained by the regression model and the variability that remains unexplained (residual variability). By comparing these two sources of variability, the F statistic allows us to assess whether the regression model as a whole explains a significant amount of the total variability in the data.
+
+Comparing mean squares: The numerator of the F statistic represents the mean square explained, which is calculated by dividing the sum of squares explained (SSR) by the corresponding degrees of freedom (df_model). The denominator represents the mean square unexplained, calculated by dividing the sum of squares residual (SSE) by the residual degrees of freedom (df_res). Dividing these two mean squares provides a standardized measure of the difference between the explained and unexplained variability.
+
+Focusing on variance ratios: Dividing the mean squares is mathematically equivalent to taking the ratio of the corresponding variances. Variance measures the dispersion or spread of a variable. By comparing the ratio of explained variance to unexplained variance, the F statistic allows us to assess whether the explained variance is significantly larger than the unexplained variance, indicating the presence of a significant relationship between the predictors and the response variable.
+
+Utilizing F-distribution properties: The F statistic follows an F-distribution under the assumption of the null hypothesis being true. The F-distribution has two sets of degrees of freedom: the numerator degrees of freedom (associated with the explained variability) and the denominator degrees of freedom (associated with the unexplained variability). The shape of the F-distribution depends on these degrees of freedom, allowing us to determine critical values for hypothesis testing and assess the statistical significance of the model.
+
+In summary, using ratios in the numerator and denominator of the F statistic helps to compare the explained and unexplained variability in regression analysis. This approach allows for standardized comparisons and leverages the properties of the F-distribution to assess the significance of the model.
+
+
+
+**Why are we dividing each by some degree of freedom?**
+
+Dividing the sum of squares by the corresponding degrees of freedom serves two primary purposes in regression analysis:
+
+Standardization: Dividing the sum of squares by its associated degrees of freedom provides a standardized measure of the variability. The result is the mean square, which represents the average amount of variability per degree of freedom. Standardization allows for fair comparisons and facilitates the interpretation of the statistical quantities.
+
+Scaling for degrees of freedom: The degrees of freedom reflect the amount of independent information available for estimating the variability in the data. By dividing the sum of squares by its associated degrees of freedom, we account for the available degrees of freedom and adjust the variability estimate accordingly. This scaling is important because as the degrees of freedom increase, the sum of squares tends to increase as well. Dividing by the degrees of freedom ensures that the mean square reflects the appropriate level of variability per degree of freedom.
+
+In the context of the F statistic, dividing the sum of squares explained (SSR) by the degrees of freedom associated with the regression model (df_model) yields the mean square explained. Similarly, dividing the sum of squares residual (SSE) by the residual degrees of freedom (df_res) yields the mean square residual. These mean squares are then used to calculate the F statistic, which compares the ratio of explained variability to unexplained variability.
+
+Dividing by the degrees of freedom is a way to normalize and adjust the variability measures in regression analysis, taking into account the available independent information and ensuring that the statistical quantities are appropriately scaled for comparison and interpretation.<br>
+
+**Why are we dividing each by some degree of freedom?**
+
+Dividing the sum of squares by the corresponding degrees of freedom serves two primary purposes in regression analysis:
+
+Standardization: Dividing the sum of squares by its associated degrees of freedom provides a standardized measure of the variability. The result is the mean square, which represents the average amount of variability per degree of freedom. Standardization allows for fair comparisons and facilitates the interpretation of the statistical quantities.
+
+Scaling for degrees of freedom: The degrees of freedom reflect the amount of independent information available for estimating the variability in the data. By dividing the sum of squares by its associated degrees of freedom, we account for the available degrees of freedom and adjust the variability estimate accordingly. This scaling is important because as the degrees of freedom increase, the sum of squares tends to increase as well. Dividing by the degrees of freedom ensures that the mean square reflects the appropriate level of variability per degree of freedom.
+
+In the context of the F statistic, dividing the sum of squares explained (SSR) by the degrees of freedom associated with the regression model (df_model) yields the mean square explained. Similarly, dividing the sum of squares residual (SSE) by the residual degrees of freedom (df_res) yields the mean square residual. These mean squares are then used to calculate the F statistic, which compares the ratio of explained variability to unexplained variability.
+
+Dividing by the degrees of freedom is a way to normalize and adjust the variability measures in regression analysis, taking into account the available independent information and ensuring that the statistical quantities are appropriately scaled for comparison and interpretation.
+
+
+
+
+
+In the context of the F statistic, the sum of squares regression (SSR) is the sum of the squared differences between the predicted values and the mean of the response variable. It quantifies the variability in the response variable that is explained by the regression model. On the other hand, the sum of squares residual (SSE) represents the sum of the squared differences between the observed response variable and the predicted response variable. It measures the unexplained variability in the response variable.
+
+To clarify the correct formula:
+```
+SSR = Σ(ŷᵢ - ȳ)²
+```
+where:
+
+SSR represents the sum of squares regression.<br>
+ŷᵢ is the predicted response variable (the value predicted by the regression model) for the ith observation.<br>
+ȳ is the mean of the observed response variable (the average value) for all observations.<br>
+Σ represents the summation symbol, indicating that you need to sum up the squared differences across all observations.<br>
+In the F statistic, dividing the SSR by the degrees of freedom associated with the regression model (df_model) yields the mean square regression, denoted as MSR. Dividing the sum of squares residual (SSE) by the residual degrees of freedom (df_res) yields the mean square residual, denoted as MSE.
+
+The F statistic is then calculated as the ratio of MSR to MSE:
+```
+F = MSR / MSE
+```
+
+
+**Are F tests statistics calculated per coefficient or how is this done on a coefficient by coefficient basis?**
+
+While the F-test assesses the overall significance of the regression model, if you are interested in determining the significance of individual coefficients, you would typically look at the corresponding t-tests or calculate confidence intervals for each coefficient separately.
+
+**how is the t statistic computed for coefficients?**
+
+The t-statistic is computed for coefficients in regression analysis to assess the significance of individual coefficients. The t-statistic measures the number of standard errors that a coefficient estimate is away from zero. It is calculated by dividing the estimated coefficient value by its standard error.
+
+The formula for calculating the t-statistic for a coefficient estimate is as follows:
+
+t = (coefficient estimate) / (standard error of coefficient)
+
+where:
+
+The coefficient estimate is the estimated value of the coefficient obtained from the regression analysis.
+The standard error of the coefficient is a measure of the uncertainty or variability associated with the coefficient estimate.
+The t-statistic follows a t-distribution with a certain number of degrees of freedom, typically based on the residual degrees of freedom in the regression model. By comparing the calculated t-statistic to the critical values from the t-distribution for a given significance level, you can determine whether the coefficient is statistically significant or not. If the absolute value of the t-statistic is greater than the critical value, it suggests that the coefficient is statistically significant, indicating that it has a non-zero effect on the response variable.
+
+In summary, the t-statistic is computed by dividing the coefficient estimate by its standard error and is used to assess the significance of individual coefficients in regression analysis.
+
+
+
+**What is the formula for the standard error of a coefficient?**
+The formula for the standard error of a coefficient estimate in regression analysis is as follows:
+```
+Standard Error = sqrt(MSE * (X'X)^(-1) )
+```
+where:
+
+MSE represents the mean square residual, which is the sum of squares residual divided by the residual degrees of freedom.<br>
+X is the design matrix that includes the predictor variables.
+X' represents the transpose of the design matrix.<br>
+(X'X)^(-1) represents the inverse of the matrix product of the transpose of X and X.<br>
+In other words, the standard error of a coefficient estimate is calculated by taking the square root of the mean square residual multiplied by the inverse of the matrix product of the transpose of the design matrix and the design matrix itself.<br>
+
+The standard error of a coefficient estimate measures the variability or uncertainty associated with the estimated coefficient. It represents the average amount by which the estimated coefficient would vary across different samples taken from the same population.
+
+The standard error is used to calculate t-statistics and construct confidence intervals for coefficient estimates, which are important in assessing the statistical significance and precision of the estimated coefficients in the regression model.
+
+**what information does the design matrix contain?**
+
+The design matrix, denoted as X, contains the predictor variables used in a regression model. Each row of the design matrix represents an observation or data point, and each column represents a predictor variable or a constant term.
+
+The design matrix contains the following information:
+
+Predictor Variables: Each column of the design matrix represents a predictor variable. These variables can be continuous, categorical, or a combination of both. Continuous variables capture numerical data, while categorical variables represent groups or categories.
+
+Constant Term: The design matrix typically includes a column of ones (or a constant term) to capture the intercept or the baseline value in the regression model. This column ensures that the regression line or hyperplane is not constrained to pass through the origin.
+
+Transformations and Interactions: The design matrix can also include transformed variables or interaction terms that capture nonlinear relationships or the combined effect of multiple predictors.
+
+By organizing the predictor variables into a design matrix, you can easily represent the relationship between the predictors and the response variable in a linear equation or matrix form. The design matrix serves as the input for estimating the regression coefficients and performing various calculations in regression analysis, such as computing the standard error, conducting hypothesis tests, and making predictions.
+
+```
+t = (coefficient estimate - hypothesized value) / (standard error of coefficient)
+```
+
+
 
 ## General linear models
