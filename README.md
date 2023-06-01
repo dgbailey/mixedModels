@@ -163,6 +163,143 @@ In ordinary least squares (OLS) regression, the estimated coefficients are the l
 When the assumptions of OLS regression, such as linearity, independence, constant variance, and normality of errors, are met, **the OLS estimators are not only unbiased but also the most efficient. In this case, they achieve the smallest possible variances, making them highly desirable for inference and hypothesis testing.**
 
 ## Sampling distributions for confidence intervals
-
+Normality helps establih a probabalistic range of possible coefficient values?
 ## Tests
+
+1. Graphical
+
+it's worth considering graphical methods, such as histograms, Q-Q plots, and kernel density plots, to visually assess the normality of residuals.
+
+
+## Test Statistics
+
+In hypothesis testing, we start with a null hypothesis, which is a statement we want to test. The test statistic is calculated based on the observed sample data and is designed to summarize the evidence against the null hypothesis.
+
+A test statistic quantifies the evidence against the null hypothesis by summarizing the relationship between the observed data and the hypothesis being tested. It provides a standardized measure that allows for statistical decision-making in hypothesis testing.
+
+The test statistic is chosen in such a way that it has a known distribution under the null hypothesis. This distribution is typically derived based on theoretical considerations or statistical assumptions. The choice of the test statistic depends on the nature of the hypothesis being tested and the specific statistical test being performed.
+
+*So in regression, the coefficients are the test statistics*
+
+No, in regression, the coefficients themselves are not considered test statistics. The coefficients in regression analysis represent the estimated parameters that describe the relationship between the independent variables and the dependent variable.
+
+In hypothesis testing in regression analysis, the test statistics are typically derived from the coefficients to assess their significance. These test statistics are used to determine whether the estimated coefficients are statistically different from zero.
+
+The most commonly used test statistic in regression analysis is the t-statistic. The t-statistic is calculated by dividing the estimated coefficient by its standard error. **It measures the number of standard errors the estimated coefficient is away from zero.(no relationship)**
+
+The t-statistic follows a t-distribution, which has a specific shape determined by the degrees of freedom. The degrees of freedom depend on the sample size and the number of independent variables in the regression model.
+
+To determine the significance of a coefficient, you compare the absolute value of the t-statistic to critical values from the t-distribution or calculate the associated p-value. If the absolute value of the t-statistic exceeds the critical value or if the p-value is smaller than the predetermined significance level (e.g., 0.05), the coefficient is considered statistically significant, indicating that it is unlikely to be zero in the population.
+
+### Are coefficients effect sizes?
+
+No, coefficients in regression analysis are not effect sizes. Effect sizes and coefficients serve different purposes and convey different information.
+
+In regression analysis, coefficients represent the estimated parameters that quantify the relationship between the independent variables and the dependent variable. They indicate the change in the dependent variable associated with a one-unit change in the corresponding independent variable, while holding other variables constant.
+
+The interpretation of coefficients depends on the specific context and scale of the variables. For example, in a simple linear regression with one independent variable, the coefficient represents the slope of the regression line, indicating the change in the dependent variable for each unit change in the independent variable.
+
+Effect sizes, on the other hand, measure the magnitude of the relationship between variables. They provide a standardized measure that allows for comparisons across different studies or different variables. Effect sizes capture the strength or magnitude of the relationship, regardless of the scale of the variables.
+
+Commonly used effect size measures in regression analysis include the coefficient of determination (R-squared), which represents the proportion of variance in the dependent variable explained by the independent variables, and the standardized regression coefficients (beta coefficients), which indicate the standardized change in the dependent variable for a one-standard-deviation change in the independent variable.
+
+
+
+
+Do you do two sided hypothesis tests for regression?
+
+
 ---
+
+## Limitations of test statistic evaluation (p values)
+
+Dependence on sample size: The p-value is influenced by the sample size. Large sample sizes tend to yield small p-values even for small effect sizes. This can result in statistically significant findings that may not have practical significance.
+
+Multiple comparisons problem: Conducting multiple hypothesis tests increases the chance of obtaining false positives. When multiple tests are performed simultaneously, there is a higher likelihood of finding statistically significant results by chance alone. Adjustments such as the Bonferroni correction or controlling the family-wise error rate can be used to address this issue.
+
+Misinterpretation and miscommunication: P-values are often misunderstood or misinterpreted, leading to incorrect conclusions or exaggerated claims. There is a risk of treating p-values as measures of truth or evidence, rather than as tools for quantifying the strength of evidence against the null hypothesis.
+
+**Let's explore the mathematical reasoning behind the influence of sample size on the p-value.**
+
+In hypothesis testing, the p-value is calculated as the probability of obtaining a test statistic as extreme as, or more extreme than, the observed value, assuming the null hypothesis is true. In many cases, the test statistic follows a known distribution under the null hypothesis.
+
+For simplicity, let's consider a one-sample t-test where we are testing the mean of a population (null hypothesis) based on a sample mean. The test statistic in this case is the t-statistic. The formula to calculate the t-statistic is:
+```
+t = (x̄ - μ) / (s / √n)
+```
+
+where:
+
+x̄ is the sample mean
+μ is the hypothesized population mean under the null hypothesis
+s is the sample standard deviation
+n is the sample size
+To calculate the p-value, we need to determine the probability of observing a t-statistic as extreme as, or more extreme than, the observed value, assuming the null hypothesis is true.
+
+As the sample size (n) increases, the denominator of the t-statistic (s / √n) decreases. This means the t-statistic becomes larger for the same difference between the sample mean and the null hypothesis mean.
+
+A larger t-statistic leads to a smaller p-value because the tails of the distribution (e.g., t-distribution) become narrower, and the probability of observing values as extreme as, or more extreme than, the observed t-statistic decreases. This is because larger sample sizes provide more precise estimates, reducing sampling variability and making it easier to detect small deviations from the null hypothesis.
+
+In other words, with a larger sample size, it becomes easier to achieve statistical significance (i.e., small p-value) because the increased precision allows for a more accurate estimation of the population parameter.
+
+In regression analysis, the influence of sample size on the p-values is similar to other hypothesis tests. However, there are a few specific considerations to keep in mind.
+
+---
+
+
+### How does this apply to regression analysis?
+
+In linear regression, the p-values are typically associated with the significance of the regression coefficients (β coefficients) that represent the relationship between the predictor variables and the response variable.
+
+When performing hypothesis tests on regression coefficients, such as t-tests or F-tests, the test statistics are calculated based on the estimated coefficients, their standard errors, and the distribution assumptions.
+
+The t-test for a regression coefficient tests the null hypothesis that the true population coefficient is zero. The test statistic is calculated as:
+
+```
+t = (β - 0) / SE(β)
+```
+
+where:
+
+β is the estimated coefficient
+SE(β) is the standard error of the coefficient
+The p-value associated with the t-test represents the probability of observing a t-statistic as extreme as, or more extreme than, the observed value under the assumption that the true coefficient is zero.
+
+Similar to other hypothesis tests, as the sample size (n) increases in regression analysis, the standard errors tend to decrease. Smaller standard errors result in larger t-statistics, leading to smaller p-values.
+
+With a larger sample size, the precision of the coefficient estimates improves, reducing sampling variability. This increased precision makes it easier to detect small effects, resulting in smaller p-values and potentially finding statistically significant relationships even for small effect sizes.
+
+### Formalizations of standard error
+
+The formula for the standard error (SE) of a regression coefficient in linear regression depends on the specific regression model being used. In the case of simple linear regression (with one predictor variable), the formula for the standard error of the coefficient is:
+
+```
+SE(β) = sqrt(Σ(y - ŷ)^2 / ((n - 2) * Σ(x - x̄)^2))
+```
+
+where:
+
+Σ represents the sum of the values<br>
+y is the observed response variable<br>
+ŷ is the predicted response variable based on the regression model<br>
+n is the sample size<br>
+x is the predictor variable<br>
+x̄ is the mean of the predictor variable<br>
+In multiple linear regression (with multiple predictor variables), the standard error of each coefficient is calculated based on the residual sum of squares (RSS) and the design matrix. The formula is more complex and involves matrix algebra. It can be represented as:<br>
+
+```
+SE(β) = sqrt(diag(inv(X'X) * RSS / (n - k)))
+```
+
+where:
+
+X is the design matrix containing the predictor variables<br>
+X' is the transpose of the design matrix<br>
+inv() represents the matrix inverse
+diag() extracts the diagonal elements of a matrix<br>
+RSS is the residual sum of squares<br>
+n is the sample size<br>
+k is the number of predictor variables in the model<br>
+
+
+## General linear models
