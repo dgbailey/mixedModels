@@ -458,6 +458,31 @@ By organizing the predictor variables into a design matrix, you can easily repre
 t = (coefficient estimate - hypothesized value) / (standard error of coefficient)
 ```
 
+## MSE deepdive
+
+The mean square error (MSE) is a measure of the average squared difference between the observed values and the predicted values in regression analysis. It quantifies the overall quality of the regression model's predictions.
+
+To compute the MSE, you typically follow these steps:
+
+Start with a set of observed values (y) and the corresponding predicted values (ŷ) from your regression model.
+
+Calculate the residual for each observation, which is the difference between the observed value and the predicted value: Residual = y - ŷ.
+
+Square each residual to eliminate negative values and emphasize larger errors: Squared Residual = (y - ŷ)^2.
+
+Sum up all the squared residuals: Sum of Squared Residuals = Σ(y - ŷ)^2.
+
+Divide the sum of squared residuals by the total number of observations (n) to get the mean squared error: MSE = (1/n) * Σ(y - ŷ)^2.
+
+The MSE represents the average of the squared differences between the observed values and the predicted values. It is a measure of how well the regression model fits the data, with smaller values indicating better fit and lower prediction errors.
+
+Note that the MSE is specific to a particular regression model and is affected by the choice of predictor variables, model assumptions, and the quality of the data. It is commonly used in evaluating and comparing different regression models based on their prediction accuracy.
+
+
+
+
+
+
 
 
 ## General linear models
