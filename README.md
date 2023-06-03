@@ -179,6 +179,16 @@ A test statistic quantifies the evidence against the null hypothesis by summariz
 
 The test statistic is chosen in such a way that it has a known distribution under the null hypothesis. This distribution is typically derived based on theoretical considerations or statistical assumptions. The choice of the test statistic depends on the nature of the hypothesis being tested and the specific statistical test being performed.
 
+ In hypothesis testing and confidence interval estimation, a t statistic is typically computed as the ratio of the difference between an estimate and a hypothesized value (usually the population mean or coefficient) to the standard error of the estimate.
+
+The formula for a t statistic is:
+
+t = (estimate - hypothesized value) / standard error
+
+For example, in a t-test comparing the means of two independent groups, the t statistic is calculated as the difference between the sample means divided by the standard error of the difference. In regression analysis, t statistics are computed for each coefficient to test their significance by comparing the coefficient estimate to zero.
+
+
+
 *So in regression, the coefficients are the test statistics*
 
 No, in regression, the coefficients themselves are not considered test statistics. The coefficients in regression analysis represent the estimated parameters that describe the relationship between the independent variables and the dependent variable.
@@ -458,7 +468,7 @@ By organizing the predictor variables into a design matrix, you can easily repre
 t = (coefficient estimate - hypothesized value) / (standard error of coefficient)
 ```
 
-## MSE deepdive
+## MSE deepdive (scalar for the F statistic?)
 
 The mean square error (MSE) is a measure of the average squared difference between the observed values and the predicted values in regression analysis. It quantifies the overall quality of the regression model's predictions.
 
@@ -478,11 +488,29 @@ The MSE represents the average of the squared differences between the observed v
 
 Note that the MSE is specific to a particular regression model and is affected by the choice of predictor variables, model assumptions, and the quality of the data. It is commonly used in evaluating and comparing different regression models based on their prediction accuracy.
 
+The degrees of freedom for the numerator (df₁) in the F-statistic correspond to the number of predictors or independent variables in the model. It represents the number of parameters being estimated.
+
+The degrees of freedom for the denominator (df₂) in the F-statistic correspond to the residual degrees of freedom, which are the total number of observations minus the number of parameters estimated in the model.
 
 
 
+Degrees of freedom cont.
 
+ that you're estimating a term (variance) that itself depends on an estimate (the mean). The mean is not known, but has error to it. By using N instead of N-1, you are not accounting for the unique bit of information that gives you the mean estimate. I.e., if you have an N of 10, then your mean estimate is uniquely determined by one of those values - You can sum 9 of those scores, and the tenth is what determines your mean. So you only actually have 9 unique pieces of information about your mean; the last one determines your mean, and your mean itself is an estimate of a population mean, with error to it. That 'last' value is ultimately what produces error in the mean estimate, so to speak. So instead of thinking of having N data points, think about having N-1 data points for the mean, and one data point determining the error of the estimated mean from the true mean.
 
-
-
+--Reddit user StephenSRMMartin
 ## General linear models
+
+Moving from multiple regression to general linear models (GLMs) may be necessary in several situations:
+
+Nonlinear relationships: If the relationship between the dependent variable and predictors is nonlinear, GLMs allow you to incorporate nonlinear terms (such as quadratic or interaction terms) to capture more complex patterns.
+
+Non-continuous outcomes: Multiple regression assumes a continuous dependent variable, but GLMs can handle various types of outcomes, including binary (e.g., logistic regression), count (e.g., Poisson regression), and categorical (e.g., multinomial regression).
+
+Violations of assumptions: If the assumptions of multiple regression are violated, such as non-constant variance (heteroscedasticity) or non-normality of residuals, GLMs provide alternative models that can handle these violations. For example, generalized least squares (GLS) can handle heteroscedasticity, and generalized estimating equations (GEE) can address correlated errors.
+
+Censored or truncated data: GLMs, such as censored regression models (e.g., Tobit regression) or survival analysis (e.g., Cox proportional hazards model), can handle data with censoring or truncation, where the outcome is not fully observed for all cases.
+
+Nested or clustered data: If your data have a hierarchical structure, such as individuals nested within groups or repeated measures on the same individuals, GLMs with random effects (such as mixed-effects models) can account for the dependencies in the data and provide more accurate estimates.
+
+Non-constant error variance: GLMs can handle situations where the assumption of constant error variance is violated, such as when the variability of the residuals changes across levels of predictors (e.g., by using weighted least squares or robust regression).
